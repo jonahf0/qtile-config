@@ -168,7 +168,7 @@ extension_defaults = widget_defaults.copy()
 bar_config = dict(
     background=dracula["black"],
     border_width=[6,4,6,4],
-    border_color=catpuccin["darklavender"], 
+    border_color=dracula["black"], 
     margin=8,
     #opacity=.9
 )

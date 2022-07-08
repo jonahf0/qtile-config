@@ -30,7 +30,7 @@ widgets = [
         foreground=dracula["white"],
     ),
     widget.TextBox(
-        "🕰 Time",
+        "🕰",
         background=dracula["red"],
         foreground=dracula["gray"]
     ),
@@ -39,7 +39,7 @@ widgets = [
         foreground=dracula["white"]
     ),
     widget.TextBox(
-        "🕬 Vol",
+        "🕬",
         background=catpuccin["sapphire"],
         foreground=dracula["gray"]
     ),
@@ -51,7 +51,7 @@ widgets = [
         mouse_callbacks={"Button1":lazy.spawn("alacritty -e alsamixer -c 2")}
     ),
     widget.TextBox(
-        "🖧 Net",
+        "🖧",
         mouse_callbacks={"Button1":lazy.spawn("alacritty -e '/home/jonah/.config/qtile/bin/launch_nmtui.sh'")},
         background=catpuccin["yellow"],
         foreground=dracula["gray"]
@@ -62,7 +62,7 @@ widgets = [
         foreground=dracula["white"]
     ),
     widget.TextBox(
-        "🌩 Batt",
+        "🌩",
         background=catpuccin["green"],
         foreground=dracula["gray"]
     ),
@@ -90,7 +90,7 @@ widgets = [
             ),
             widget.QuickExit(
                 default_text='➜',
-                countdown_format='[{}]',
+                countdown_format='{}',
                 background=catpuccin["black"],
                 foreground=dracula["orange"]
             ),
