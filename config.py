@@ -31,12 +31,10 @@ from libqtile.utils import guess_terminal
 
 from os.path import expanduser
 from subprocess import Popen
-from random import randint
 
 from dracula import dracula
 from catpuccin import catpuccin
 from widgets import widgets
-from wallpapers import wallpapers
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -89,13 +87,6 @@ keys = keys = [
     # Change the volume if your keyboard has special volume keys.
     Key([], "XF86AudioRaiseVolume",lazy.spawn("amixer -D pulse sset Master 5%+")),
     Key([], "XF86AudioLowerVolume",lazy.spawn("amixer -D pulse sset Master 5%-")),
-    Key(
-        [mod, "shift"],
-        "Tab",
-        lazy.spawn(
-            f"nitrogen --set-scaled {wallpapers[randint(1,5)]}"
-        )
-    )
 ]
 
 groups = [Group(i) for i in "123456789"]

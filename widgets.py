@@ -30,6 +30,20 @@ widgets = [
         foreground=dracula["white"],
     ),
     widget.TextBox(
+        "◻",
+        background=dracula["purple"],
+        foreground=dracula["gray"]
+    ),
+    widget.Wallpaper(
+        max_chars=8,
+        foreground=dracula["white"],
+        directory="~/Pictures/Wallpapers",
+        wallpaper_command=["nitrogen", "--set-scaled"],
+    ),
+    widget.Spacer(
+        8
+    ),
+    widget.TextBox(
         "🕰",
         background=dracula["red"],
         foreground=dracula["gray"]
