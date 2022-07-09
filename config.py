@@ -34,7 +34,7 @@ from subprocess import Popen
 
 from dracula import dracula
 from catpuccin import catpuccin
-from widgets import widgets
+from widgets import widget_producer
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -176,7 +176,7 @@ bar_config = dict(
 screens = [ 
     Screen(
         top=bar.Bar(
-            widgets,
+            widget_producer("theme"),
             40,
             **bar_config
         )
