@@ -35,7 +35,6 @@ from subprocess import Popen
 from dracula import dracula
 from catpuccin import catpuccin
 from widgets import widget_producer
-from lib.random_term import random_term
 
 mod = "mod4"
 #terminal = guess_terminal()
@@ -78,8 +77,8 @@ keys = keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-    #Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "Return", lazy.spawn(random_term()), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn("/home/jonah/.config/qtile/bin/random_term.sh"), desc="Launch terminal"),
+    #Key([mod], "Return", lazy.spawn("alacritty"), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
