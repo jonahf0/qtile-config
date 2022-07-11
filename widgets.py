@@ -5,42 +5,43 @@ from subprocess import  check_output
 
 from dracula import dracula
 from catpuccin import catpuccin
+from themes import dracula_theme
 
-def widget_producer(theme: str) -> list[widget]:
+def widget_producer(theme: dict) -> list[widget]:
     
     widgets = [
         widget.CurrentLayoutIcon(
             scale=.75,
-            background=catpuccin["darklavender"],
-            foreground=dracula["white"]
+            background=dracula_theme["current_layout_background"],
+            #foreground=dracula["white"]
         ),
         widget.GroupBox(
             #border=dracula["cyan"],
-            active=dracula["white"],
+            active=dracula_theme["widget_default_foreground"],
             #background=dracula["orange"],
-            block_highlight_text_color=dracula["gray"],
+            block_highlight_text_color=dracula_theme["active_foreground"],
             highlight_method="block",
-            highlight_color=dracula["red"],
+            #highlight_color=dracula["red"],
             hide_unused=True,
             round=True,
             margin_x=5,
             spacing=5,
-            this_current_screen_border=catpuccin["peach"],
+            this_current_screen_border=dracula_theme["current_group"],
             #this_screen_border=catpuccin["mauve"]
         ),
         widget.WindowName(
             max_chars=30,
             #background=dracula["black"],
-            foreground=dracula["white"],
+            #foreground=dracula["white"],
         ),
         widget.TextBox(
             "◻",
-            background=dracula["purple"],
-            foreground=dracula["gray"]
+            background=dracula_theme["wallpaper_color"],
+            foreground=dracula_theme["wallpaper_foreground"]
         ),
         widget.Wallpaper(
             max_chars=8,
-            foreground=dracula["white"],
+            #foreground=dracula["white"],
             directory="~/Pictures/Wallpapers",
             wallpaper_command=["nitrogen", "--set-scaled"],
             random_selection=True
@@ -50,34 +51,34 @@ def widget_producer(theme: str) -> list[widget]:
         ),
         widget.TextBox(
             "🕰",
-            background=dracula["red"],
-            foreground=dracula["gray"]
+            background=dracula_theme["clock_color"],
+            foreground=dracula_theme["clock_foreground"]
         ),
         widget.Clock(
             format="%I:%M %p",
-            foreground=dracula["white"]
+            #foreground=dracula["white"]
         ),
         widget.TextBox(
             "🕬",
-            background=catpuccin["sapphire"],
-            foreground=dracula["gray"]
+            background=dracula_theme["volume_background"],
+            foreground=dracula_theme["volume_foreground"]
         ),
         widget.PulseVolume(
             fmt="{}",
             limit_max_volume=True,
-            foreground=dracula["white"],
+            #foreground=dracula["white"],
             update_interval=.02,
             mouse_callbacks={"Button1":lazy.spawn("alacritty -e alsamixer -c 2")}
         ),
         widget.TextBox(
             "🖧",
             mouse_callbacks={"Button1":lazy.spawn("alacritty -e '/home/jonah/.config/qtile/bin/launch_nmtui.sh'")},
-            background=catpuccin["yellow"],
-            foreground=dracula["gray"]
+            background=dracula_theme["net_background"],
+            foreground=dracula_theme["net_foreground"]
         ),
         widget.GenPollText(
             func=(lambda: check_output(["/home/jonah/.config/qtile/bin/check_internet.sh"]).decode()),
-            foreground=dracula["white"]
+            #foreground=dracula["white"]
         ),
         #widget.Wlan(
         #    interface="wlp2s0",
@@ -86,12 +87,12 @@ def widget_producer(theme: str) -> list[widget]:
         #),
         widget.TextBox(
             "🌩",
-            background=catpuccin["green"],
-            foreground=dracula["gray"]
+            background=dracula_theme["bat_background"],
+            foreground=dracula_theme["bat_foreground"]
         ),
         widget.Battery(
             format="{char} {percent:2.0%} {hour:d}:{min:02d}",
-            foreground=dracula["white"]
+            #foreground=dracula["white"]
         ),
         widget.WidgetBox(
             [
@@ -100,32 +101,32 @@ def widget_producer(theme: str) -> list[widget]:
                         ("🛆", "slock", "locks the screen using SLock"),
                     ],
                     text_only=True,
-                    background=catpuccin["black"],
-                    foreground=catpuccin["sky"]
+                    background=dracula_theme["launcher_background"],
+                    foreground=dracula_theme["lock"]
                 ),
                 widget.LaunchBar(
                     progs=[
                         ("⏾", "systemctl suspend", "suspend session"),
                     ],
                     text_only=True,
-                    background=catpuccin["black"],
-                    foreground=dracula["yellow"]
+                    background=dracula_theme["launcher_background"],
+                    foreground=dracula_theme["sleep"]
                 ),
                 widget.TextBox(
                     text='➜',
                     mouse_callbacks={
                         "Button1":lazy.shutdown()
                     },
-                    background=catpuccin["black"],
-                    foreground=dracula["orange"]
+                    background=dracula_theme["launcher_background"],
+                    foreground=dracula_theme["exit"]
                 ),
                 widget.LaunchBar(
                     progs=[
                         ("⏻", "shutdown now", "shutdown computer"),
                     ],
                     text_only=True,
-                    background=catpuccin["black"],
-                    foreground=dracula["red"]
+                    background=dracula_theme["launcher_background"],
+                    foreground=dracula_theme["poweroff"]
                 ),
             ],
             #text_closed="[⚙]",
@@ -134,8 +135,8 @@ def widget_producer(theme: str) -> list[widget]:
             #text_open=" 🛳 "
             text_closed=" 🖳 ",
             text_open=" 🖳 ",
-            background=dracula["pink"],
-            foreground=dracula["gray"],
+            background=dracula_theme["widgetbox_background"],
+            foreground=dracula_theme["widgetbox_foreground"],
             fontsize=24
         )
         

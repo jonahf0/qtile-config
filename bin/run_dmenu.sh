@@ -1,6 +1,9 @@
 #!/bin/bash
 dmenu_run -fn "Fira Mono:bold:pixelsize=22"\
-	-nb "#11111b" \
+	-nb "#6272a4" \
 	-nf "#f8f8f2" \
-	-sb "#7287fd" \
-	-sf "#282a36"
+	-sb "#bd93f9" \
+	-sf "#282a36" \
+	-l 6 \
+	-wm \
+	-z 960

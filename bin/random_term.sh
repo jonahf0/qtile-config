@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TERMS=("alacritty" "st")
-SHELLS=("bash" "fish" "pwsh")
+SHELLS=("bash" "fish" "pwsh -nol")
 
 R_TERM=$(shuf -i 0-1 -n 1)
 R_SHELL=$(shuf -i 0-2 -n 1)

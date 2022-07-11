@@ -35,10 +35,12 @@ from subprocess import Popen
 from dracula import dracula
 from catpuccin import catpuccin
 from widgets import widget_producer
+from themes import dracula_theme
 
 mod = "mod4"
 #terminal = guess_terminal()
 #terminal = "alacritty"
+theme = dracula_theme
 
 keys = keys = [
     # A list of available commands that can be bound to keys can be found
@@ -50,9 +52,7 @@ keys = keys = [
     Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
-    # Moving out of range in Columns layout will create new column.
-    
-    
+    # Moving out of range in Columns layout will create new columns
     #Key(["control"], "Left", lazy.layout.shuffle_left(), desc="Move window to the left"),
     #Key(["control"], "Right", lazy.layout.shuffle_right(), desc="Move window to the right"),
     #Key(["control"], "Down", lazy.layout.shuffle_down(), desc="Move window down"),
@@ -117,10 +117,15 @@ for i in groups:
         ]
     )
 
-
 default_layout_args = dict(
-    border_focus=catpuccin["darklavender"],
-    border_normal=dracula["black"],
+    border_focus=theme["default_layout_focus"],
+    border_normal=theme["default_layout_normal"],
+    border_width=4,
+)
+
+floating_layout_args = dict(
+    border_focus=theme["floating_layout_focus"],
+    border_normal=theme["floating_layout_normal"],
     border_width=4,
 )
 
@@ -132,7 +137,7 @@ layouts = [
         ),
     layout.Max(),
     layout.Floating(
-        **default_layout_args
+        **floating_layout_args
     ),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -160,17 +165,17 @@ screens = [
 
 widget_defaults = dict(
     font="Fira Mono",
-    foreground=dracula["black"],
+    foreground=theme["widget_default_foreground"],
     fontsize=20,
     padding=10,
-    border=catpuccin["lavender"],
+    border=theme["border_color"],
 )
 extension_defaults = widget_defaults.copy()
 
 bar_config = dict(
-    background=dracula["black"],
+    background=theme["widget_default_background"],
     border_width=[6,4,6,4],
-    border_color=dracula["black"], 
+    border_color=theme["border_color"], 
     margin=8,
     #opacity=.9
 )
@@ -178,7 +183,7 @@ bar_config = dict(
 screens = [ 
     Screen(
         top=bar.Bar(
-            widget_producer("theme"),
+            widget_producer(theme),
             40,
             **bar_config
         )
@@ -187,10 +192,10 @@ screens = [
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
-    Click([mod, "shift"], "Button3", lazy.window.bring_to_front()),
-    Click([mod, "shift"],"Button1", lazy.window.toggle_floating()),
+    Drag([mod], "Button3", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+    Drag([mod], "Button1", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Click([mod, "shift"], "Button1", lazy.window.bring_to_front()),
+    Click([mod, "shift"],"Button3", lazy.window.toggle_floating()),
 ]
 
 dgroups_key_binder = None
@@ -208,8 +213,9 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
+        Match(wm_class="dmenu"),
     ],
-    **default_layout_args
+    **floating_layout_args
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
