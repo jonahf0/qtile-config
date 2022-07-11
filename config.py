@@ -40,6 +40,8 @@ mod = "mod4"
 #terminal = guess_terminal()
 terminal = "alacritty"
 
+BIN = "/home/jonah/.config/qtile/bin/"
+
 keys = keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -77,7 +79,7 @@ keys = keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-    Key([mod], "Return", lazy.spawn("/home/jonah/.config/qtile/bin/random_term.sh"), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn(f"{BIN}random_term.sh"), desc="Launch terminal"),
     #Key([mod], "Return", lazy.spawn("alacritty"), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -85,7 +87,7 @@ keys = keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "d", lazy.spawn("/home/jonah/.config/qtile/bin/run_dmenu.sh"), desc="Run dmenu"),
+    Key([mod], "d", lazy.spawn(f"{BIN}/run_dmenu.sh"), desc="Run dmenu"),
     # Change the volume if your keyboard has special volume keys.
     Key([], "XF86AudioRaiseVolume",lazy.spawn("amixer -D pulse sset Master 5%+")),
     Key([], "XF86AudioLowerVolume",lazy.spawn("amixer -D pulse sset Master 5%-")),

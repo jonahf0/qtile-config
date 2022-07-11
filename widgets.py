@@ -3,6 +3,7 @@ from libqtile.lazy import lazy
 
 from dracula import dracula
 from catpuccin import catpuccin
+from config import BIN
 
 def widget_producer(theme: str) -> list[widget]:
     
@@ -69,7 +70,7 @@ def widget_producer(theme: str) -> list[widget]:
         ),
         widget.TextBox(
             "🖧",
-            mouse_callbacks={"Button1":lazy.spawn("alacritty -e '/home/jonah/.config/qtile/bin/launch_nmtui.sh'")},
+            mouse_callbacks={"Button1":lazy.spawn(f"alacritty -e '{BIN}launch_nmtui.sh'")},
             background=catpuccin["yellow"],
             foreground=dracula["gray"]
         ),
