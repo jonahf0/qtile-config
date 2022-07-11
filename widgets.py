@@ -76,7 +76,7 @@ def widget_producer(theme: str) -> list[widget]:
             foreground=dracula["gray"]
         ),
         widget.GenPollText(
-            func=(lambda: check_output(["/home/jonah/.config/qtile/bin/check_internet.sh"])),
+            func=(lambda: check_output(["/home/jonah/.config/qtile/bin/check_internet.sh"]).decode()),
             foreground=dracula["white"]
         ),
         #widget.Wlan(
