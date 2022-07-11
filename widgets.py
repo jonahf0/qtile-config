@@ -1,8 +1,11 @@
 from libqtile import widget
 from libqtile.lazy import lazy
 
+from subprocess import  check_output
+
 from dracula import dracula
 from catpuccin import catpuccin
+from config import BIN
 
 def widget_producer(theme: str) -> list[widget]:
     
@@ -69,15 +72,19 @@ def widget_producer(theme: str) -> list[widget]:
         ),
         widget.TextBox(
             "🖧",
-            mouse_callbacks={"Button1":lazy.spawn("alacritty -e '/home/jonah/.config/qtile/bin/launch_nmtui.sh'")},
+            mouse_callbacks={"Button1":lazy.spawn(f"alacritty -e '{BIN}launch_nmtui.sh'")},
             background=catpuccin["yellow"],
             foreground=dracula["gray"]
         ),
-        widget.Wlan(
-            interface="wlp2s0",
-            format="{essid} {percent:2.0%}",
+        widget.GenPollText(
+            func=(lambda: check_output([f"{BIN}check_internet.sh"])),
             foreground=dracula["white"]
         ),
+        #widget.Wlan(
+        #    interface="wlp2s0",
+        #    format="{essid} {percent:2.0%}",
+        #    foreground=dracula["white"]
+        #),
         widget.TextBox(
             "🌩",
             background=catpuccin["green"],
