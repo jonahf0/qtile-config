@@ -38,7 +38,11 @@ from widgets import widget_producer
 
 mod = "mod4"
 #terminal = guess_terminal()
-terminal = "alacritty"
+#terminal = "alacritty"
+
+BIN = '/home/jonah/.config/qtile/bin/'
+
+BIN = "/home/jonah/.config/qtile/bin/"
 
 BIN = "/home/jonah/.config/qtile/bin/"
 
