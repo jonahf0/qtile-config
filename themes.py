@@ -1,7 +1,62 @@
-from catpuccin import catpuccin
-from dracula import dracula
+#from catpuccin import catpuccin
+#from dracula import dracula
+
+dracula = {
+    "black":"#282a36",
+    "gray":"#44475a",
+    "white":"#f8f8f2",
+    "blue-gray":"#6272a4",
+    "cyan":"#8be9fd",
+    "green":"#50fa7b",
+    "orange":"#ffb86c",
+    "pink":"#ff79c6",
+    "purple":"#bd93f9",
+    "red":"#ff5555",
+    "yellow":"#f1fa8c",
+}
+
+catpuccin = {
+    "lavender":"#b4befe",
+	"darklavender":"#7287fd",
+    "gray":"#6c7086",
+    "rosewater":"#f5e0dc",
+	"flamingo":"#f2cdcd",
+	"pink":"#f5c2e7",
+	"mauve":"#cba6f7",
+	"red":"#f38ba8",
+	"maroon":"#eba0ac",
+	"peach":"#fab387",
+	"yellow":"#f9e2af",
+	"green":"#a6e3a1",
+	"teal":"#94e2d5",
+	"sky": "#89dceb",
+	"sapphire":"#74c7ec",
+	"blue":"#89b4fa",
+	"white":"#cdd6f4",
+	"black":"#11111b"
+}
+
+nord = {
+    "gray0":"#2e3440",
+    "gray1":"#3b4252",
+    "gray2":"#434c5e",
+    "gray3":"#4c566a",
+    "snow0":"#d8dee9",
+    "snow1":"#e5e9f0",
+    "snow2":"#eceff4",
+    "frost0":"#5e81ac",
+    "frost1":"#81a1c1",
+    "frost2":"#88c0d0",
+    "frost3":"#8fbcbb",
+    "red":"#bf616a",
+    "orange":"#d08770",
+    "yellow":"#ebcb8b",
+    "green":"#a3be8c",
+    "purple": "#b48ead" 
+}
 
 dracula_theme = dict(
+    name="dracula",
     default_layout_focus=catpuccin["darklavender"],
     default_layout_normal=dracula["black"],
     floating_layout_focus=catpuccin["peach"],
@@ -31,4 +86,71 @@ dracula_theme = dict(
     sleep=dracula["yellow"],
     exit=dracula["orange"],
     poweroff=dracula["red"]
+)
+
+
+nord_colorful_theme = dict(
+    name="nord",
+    default_layout_focus=nord["frost1"],
+    default_layout_normal=nord["gray3"],
+    floating_layout_focus=nord["purple"],
+    floating_layout_normal=nord["gray3"],
+    widget_default_background=nord["gray0"],
+    widget_default_foreground=nord["snow0"],
+    border_color=nord["gray0"],
+    current_layout_background=nord["frost3"],
+    current_layout_foreground=nord["snow0"],
+    #active=dracula["white"],
+    active_foreground=nord["gray0"],
+    current_group=nord["orange"],
+    wallpaper_color=nord["purple"],
+    wallpaper_foreground=nord["gray0"],
+    clock_color=nord["red"],
+    clock_foreground=nord["gray0"],
+    volume_background=nord["frost2"],
+    volume_foreground=nord["gray0"],
+    net_background=nord["yellow"],
+    net_foreground=nord["gray0"],
+    bat_background=nord["green"],
+    bat_foreground=nord["gray0"],
+    widgetbox_background=catpuccin["maroon"],
+    widgetbox_foreground=nord["gray0"],
+    launcher_background=nord["gray2"],
+    lock=catpuccin["sky"],
+    sleep=dracula["yellow"],
+    exit=dracula["orange"],
+    poweroff=dracula["red"]
+)
+
+nord_strict_theme = dict(
+    name="nord",
+    default_layout_focus=nord["frost1"],
+    default_layout_normal=nord["gray3"],
+    floating_layout_focus=nord["frost1"],
+    floating_layout_normal=nord["gray3"],
+    widget_default_background=nord["gray0"],
+    widget_default_foreground=nord["snow0"],
+    border_color=nord["gray0"],
+    current_layout_background=nord["frost0"],
+    current_layout_foreground=nord["snow0"],
+    #active=dracula["white"],
+    active_foreground=nord["gray0"],
+    current_group=nord["frost3"],
+    wallpaper_color=nord["frost3"],
+    wallpaper_foreground=nord["gray0"],
+    clock_color=nord["frost3"],
+    clock_foreground=nord["gray0"],
+    volume_background=nord["frost3"],
+    volume_foreground=nord["gray0"],
+    net_background=nord["frost3"],
+    net_foreground=nord["gray0"],
+    bat_background=nord["frost3"],
+    bat_foreground=nord["gray0"],
+    widgetbox_background=nord["orange"],
+    widgetbox_foreground=nord["gray0"],
+    launcher_background=nord["gray0"],
+    lock=nord["green"],
+    sleep=nord["yellow"],
+    exit=nord["orange"],
+    poweroff=nord["red"]
 )

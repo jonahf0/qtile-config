@@ -31,16 +31,19 @@ from libqtile.utils import guess_terminal
 
 from os.path import expanduser
 from subprocess import Popen
+from itertools import cycle
 
-from dracula import dracula
-from catpuccin import catpuccin
+#from dracula import dracula
+#from catpuccin import catpuccin
 from widgets import widget_producer
-from themes import dracula_theme
+from themes import *
 
 mod = "mod4"
-#terminal = guess_terminal()
-#terminal = "alacritty"
+
 theme = dracula_theme
+#theme = nord_strict_theme
+#theme = nord_colorful_theme
+
 
 keys = keys = [
     # A list of available commands that can be bound to keys can be found
@@ -85,7 +88,7 @@ keys = keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "d", lazy.spawn("/home/jonah/.config/qtile/bin/run_dmenu.sh"), desc="Run dmenu"),
+    Key([mod], "d", lazy.spawn(f"/home/jonah/.config/qtile/bin/run_dmenu_{theme['name']}.sh"), desc="Run dmenu"),
     # Change the volume if your keyboard has special volume keys.
     Key([], "XF86AudioRaiseVolume",lazy.spawn("amixer -D pulse sset Master 5%+")),
     Key([], "XF86AudioLowerVolume",lazy.spawn("amixer -D pulse sset Master 5%-")),
@@ -192,8 +195,8 @@ screens = [
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button3", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button1", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
     Click([mod, "shift"], "Button1", lazy.window.bring_to_front()),
     Click([mod, "shift"],"Button3", lazy.window.toggle_floating()),
 ]
