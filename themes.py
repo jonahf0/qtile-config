@@ -55,11 +55,20 @@ nord = {
     "purple": "#b48ead" 
 }
 
+whiscash = {
+    "blue":"#39619c",
+    "lightblue":"#73abe6",
+    "black":"#294159",
+    "yellow":"#ffd541",
+    "gray":dracula["gray"],
+    "white":dracula["white"]
+}
+
 dracula_theme = dict(
     name="dracula",
     default_layout_focus=catpuccin["darklavender"],
     default_layout_normal=dracula["black"],
-    floating_layout_focus=catpuccin["peach"],
+    floating_layout_focus=dracula["cyan"],
     floating_layout_normal=dracula["black"],
     widget_default_background=dracula["black"],
     widget_default_foreground=dracula["white"],
@@ -120,6 +129,39 @@ nord_colorful_theme = dict(
     sleep=dracula["yellow"],
     exit=dracula["orange"],
     poweroff=dracula["red"]
+)
+
+whiscash_theme = dict(
+    name="whiscash",
+    default_layout_focus=whiscash["yellow"],
+    default_layout_normal=whiscash["gray"],
+    floating_layout_focus=whiscash["yellow"],
+    floating_layout_normal=whiscash["gray"],
+    widget_default_background=whiscash["black"],
+    widget_default_foreground=whiscash["white"],
+    border_color=whiscash["black"],
+    current_layout_background=whiscash["blue"],
+    current_layout_foreground=whiscash["white"],
+    #active=dracula["white"],
+    active_foreground=whiscash["black"],
+    current_group=whiscash["yellow"],
+    wallpaper_color=whiscash["lightblue"],
+    wallpaper_foreground=whiscash["black"],
+    clock_color=whiscash["blue"],
+    clock_foreground=whiscash["white"],
+    volume_background=whiscash["yellow"],
+    volume_foreground=whiscash["black"],
+    net_background=whiscash["lightblue"],
+    net_foreground=whiscash["black"],
+    bat_background=whiscash["blue"],
+    bat_foreground=whiscash["white"],
+    widgetbox_background=whiscash["yellow"],
+    widgetbox_foreground=whiscash["black"],
+    launcher_background=whiscash["lightblue"],
+    lock=whiscash["black"],
+    sleep=whiscash["black"],
+    exit=whiscash["black"],
+    poweroff=whiscash["black"]
 )
 
 nord_strict_theme = dict(

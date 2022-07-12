@@ -40,9 +40,10 @@ from themes import *
 
 mod = "mod4"
 
-theme = dracula_theme
+#theme = dracula_theme
 #theme = nord_strict_theme
 #theme = nord_colorful_theme
+theme = whiscash_theme
 
 
 keys = keys = [
